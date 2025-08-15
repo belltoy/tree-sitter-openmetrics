@@ -50,7 +50,7 @@ enum ts_symbol_identifiers {
   sym_help_line = 28,
   sym_type_line = 29,
   sym_unit_line = 30,
-  sym_eof_line = 31,
+  sym__eof_line = 31,
   sym_metric_type = 32,
   sym_sample = 33,
   sym_exemplar = 34,
@@ -62,10 +62,10 @@ enum ts_symbol_identifiers {
   aux_sym_source_file_repeat1 = 40,
   aux_sym_metricfamily_repeat1 = 41,
   aux_sym_label_set_repeat1 = 42,
-  anon_alias_sym_label_value = 43,
-  anon_alias_sym_metric = 44,
-  anon_alias_sym_metricset = 45,
-  anon_alias_sym_unit = 46,
+  alias_sym_label_value = 43,
+  alias_sym_metric = 44,
+  alias_sym_metricset = 45,
+  alias_sym_unit = 46,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -100,7 +100,7 @@ static const char * const ts_symbol_names[] = {
   [sym_help_line] = "help_line",
   [sym_type_line] = "type_line",
   [sym_unit_line] = "unit_line",
-  [sym_eof_line] = "eof_line",
+  [sym__eof_line] = "eof",
   [sym_metric_type] = "metric_type",
   [sym_sample] = "sample",
   [sym_exemplar] = "exemplar",
@@ -112,10 +112,10 @@ static const char * const ts_symbol_names[] = {
   [aux_sym_source_file_repeat1] = "source_file_repeat1",
   [aux_sym_metricfamily_repeat1] = "metricfamily_repeat1",
   [aux_sym_label_set_repeat1] = "label_set_repeat1",
-  [anon_alias_sym_label_value] = "label_value",
-  [anon_alias_sym_metric] = "metric",
-  [anon_alias_sym_metricset] = "metricset",
-  [anon_alias_sym_unit] = "unit",
+  [alias_sym_label_value] = "label_value",
+  [alias_sym_metric] = "metric",
+  [alias_sym_metricset] = "metricset",
+  [alias_sym_unit] = "unit",
 };
 
 static const TSSymbol ts_symbol_map[] = {
@@ -150,7 +150,7 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_help_line] = sym_help_line,
   [sym_type_line] = sym_type_line,
   [sym_unit_line] = sym_unit_line,
-  [sym_eof_line] = sym_eof_line,
+  [sym__eof_line] = sym__eof_line,
   [sym_metric_type] = sym_metric_type,
   [sym_sample] = sym_sample,
   [sym_exemplar] = sym_exemplar,
@@ -162,10 +162,10 @@ static const TSSymbol ts_symbol_map[] = {
   [aux_sym_source_file_repeat1] = aux_sym_source_file_repeat1,
   [aux_sym_metricfamily_repeat1] = aux_sym_metricfamily_repeat1,
   [aux_sym_label_set_repeat1] = aux_sym_label_set_repeat1,
-  [anon_alias_sym_label_value] = anon_alias_sym_label_value,
-  [anon_alias_sym_metric] = anon_alias_sym_metric,
-  [anon_alias_sym_metricset] = anon_alias_sym_metricset,
-  [anon_alias_sym_unit] = anon_alias_sym_unit,
+  [alias_sym_label_value] = alias_sym_label_value,
+  [alias_sym_metric] = alias_sym_metric,
+  [alias_sym_metricset] = alias_sym_metricset,
+  [alias_sym_unit] = alias_sym_unit,
 };
 
 static const TSSymbolMetadata ts_symbol_metadata[] = {
@@ -271,7 +271,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   },
   [sym__escaped_string] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
   [sym_source_file] = {
     .visible = true,
@@ -293,7 +293,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym_eof_line] = {
+  [sym__eof_line] = {
     .visible = true,
     .named = true,
   },
@@ -341,53 +341,53 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = false,
   },
-  [anon_alias_sym_label_value] = {
+  [alias_sym_label_value] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
-  [anon_alias_sym_metric] = {
+  [alias_sym_metric] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
-  [anon_alias_sym_metricset] = {
+  [alias_sym_metricset] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
-  [anon_alias_sym_unit] = {
+  [alias_sym_unit] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
 };
 
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {
   [0] = {0},
   [1] = {
-    [1] = anon_alias_sym_metric,
+    [1] = alias_sym_metric,
   },
   [2] = {
-    [0] = anon_alias_sym_metricset,
+    [0] = alias_sym_metricset,
   },
   [3] = {
-    [2] = anon_alias_sym_metric,
+    [2] = alias_sym_metric,
   },
   [4] = {
-    [3] = anon_alias_sym_metric,
+    [3] = alias_sym_metric,
   },
   [5] = {
-    [3] = anon_alias_sym_unit,
+    [3] = alias_sym_unit,
   },
   [6] = {
-    [3] = anon_alias_sym_label_value,
+    [3] = alias_sym_label_value,
   },
 };
 
 static const uint16_t ts_non_terminal_alias_map[] = {
   aux_sym_source_file_repeat1, 2,
     aux_sym_source_file_repeat1,
-    anon_alias_sym_metricset,
+    alias_sym_metricset,
   aux_sym_metricfamily_repeat1, 2,
     aux_sym_metricfamily_repeat1,
-    anon_alias_sym_metric,
+    alias_sym_metric,
   0,
 };
 
@@ -1004,7 +1004,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym_source_file] = STATE(61),
     [sym_metricfamily] = STATE(48),
     [sym_type_line] = STATE(3),
-    [sym_eof_line] = STATE(55),
+    [sym__eof_line] = STATE(55),
     [aux_sym_source_file_repeat1] = STATE(5),
     [anon_sym_POUND] = ACTIONS(3),
   },
@@ -1058,7 +1058,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(48), 1,
       sym_metricfamily,
     STATE(62), 1,
-      sym_eof_line,
+      sym__eof_line,
   [66] = 5,
     ACTIONS(11), 1,
       sym_metric_name,
@@ -1526,7 +1526,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [76] = {.entry = {.count = 1, .reusable = true}}, SHIFT(22),
   [78] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_sample, 6, 0, 0),
   [80] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_label, 5, 0, 6),
-  [82] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_eof_line, 2, 0, 0),
+  [82] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__eof_line, 2, 0, 0),
   [84] = {.entry = {.count = 1, .reusable = true}}, SHIFT(51),
   [86] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_sample, 3, 0, 0),
   [88] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_timestamp, 1, 0, 0),
@@ -1543,7 +1543,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [110] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 1, 0, 0),
   [112] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_label_name, 1, 0, 0),
   [114] = {.entry = {.count = 1, .reusable = true}}, SHIFT(64),
-  [116] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_eof_line, 3, 0, 0),
+  [116] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__eof_line, 3, 0, 0),
   [118] = {.entry = {.count = 1, .reusable = true}}, SHIFT(63),
   [120] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_source_file, 1, 0, 0),
   [122] = {.entry = {.count = 1, .reusable = true}}, SHIFT(70),

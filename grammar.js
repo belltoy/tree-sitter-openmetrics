@@ -15,31 +15,31 @@ module.exports = grammar({
   extras: ($) => [' '],
 
   rules: {
-    source_file: $ => seq(alias(repeat($.metricfamily), "metricset"), $.eof_line),
+    source_file: $ => seq(alias(repeat($.metricfamily), $.metricset), alias($._eof_line, $.eof)),
 
     metricfamily: $ => prec.right(seq(
       $.type_line,
       optional($.unit_line),
       optional($.help_line),
-      alias(repeat($.sample), "metric"),
+      alias(repeat($.sample), $.metric),
     )),
 
-    help_line: $ => seq(token("#"), token("HELP"), $.metric_name, alias($._escaped_string, "metric_help"), '\n'),
+    help_line: $ => seq(token("#"), token("HELP"), $.metric_name, alias($._escaped_string, $.metric_help), '\n'),
 
     type_line: $ => seq(token("#"), token("TYPE"), $.metric_name, $.metric_type, '\n'),
 
-    unit_line: $ => seq(token("#"), token("UNIT"), $.metric_name, alias(/[a-zA-Z_][a-zA-Z0-9_]*/, "unit"), '\n'),
+    unit_line: $ => seq(token("#"), token("UNIT"), $.metric_name, alias(/[a-zA-Z_][a-zA-Z0-9_]*/, $.unit), '\n'),
 
-    eof_line: $ => seq(token("#"), token("EOF"), optional('\n')),
+    _eof_line: $ => seq(token("#"), token("EOF"), optional('\n')),
 
     metric_type: $ => choice(
-      "counter", 
-      "gauge", 
-      "histogram", 
-      "gaugehistogram", 
-      "stateset", 
-      "info", 
-      "summary", 
+      "counter",
+      "gauge",
+      "histogram",
+      "gaugehistogram",
+      "stateset",
+      "info",
+      "summary",
       "unknown",
       ),
 
@@ -63,7 +63,7 @@ module.exports = grammar({
 
     label_set: $ => seq("{", optional(seq($.label, repeat(seq(",", $.label)), optional(","))), "}"),
 
-    label: $ => seq($.label_name, "=", '"', alias($._escaped_string, "label_value"), '"'),
+    label: $ => seq($.label_name, "=", '"', alias($._escaped_string, $.label_value), '"'),
 
     label_name: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 

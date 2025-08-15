@@ -1,6 +1,6 @@
 [
   {
-    "type": "eof_line",
+    "type": "eof",
     "named": true,
     "fields": {}
   },
@@ -32,9 +32,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "metric_help",
+          "named": true
+        },
         {
           "type": "metric_name",
           "named": true
@@ -47,11 +51,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "label_name",
+          "named": true
+        },
+        {
+          "type": "label_value",
           "named": true
         }
       ]
@@ -79,7 +87,7 @@
   },
   {
     "type": "metric",
-    "named": false,
+    "named": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -115,6 +123,10 @@
           "named": true
         },
         {
+          "type": "metric",
+          "named": true
+        },
+        {
           "type": "type_line",
           "named": true
         },
@@ -127,7 +139,7 @@
   },
   {
     "type": "metricset",
-    "named": false,
+    "named": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -177,11 +189,15 @@
     "root": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "eof_line",
+          "type": "eof",
+          "named": true
+        },
+        {
+          "type": "metricset",
           "named": true
         }
       ]
@@ -216,11 +232,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "metric_name",
+          "named": true
+        },
+        {
+          "type": "unit",
           "named": true
         }
       ]
@@ -284,11 +304,11 @@
   },
   {
     "type": "label_value",
-    "named": false
+    "named": true
   },
   {
     "type": "metric_help",
-    "named": false
+    "named": true
   },
   {
     "type": "metric_name",
@@ -304,7 +324,7 @@
   },
   {
     "type": "unit",
-    "named": false
+    "named": true
   },
   {
     "type": "unknown",

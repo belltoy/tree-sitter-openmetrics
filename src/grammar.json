@@ -14,12 +14,17 @@
               "name": "metricfamily"
             }
           },
-          "named": false,
+          "named": true,
           "value": "metricset"
         },
         {
-          "type": "SYMBOL",
-          "name": "eof_line"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_eof_line"
+          },
+          "named": true,
+          "value": "eof"
         }
       ]
     },
@@ -66,7 +71,7 @@
                 "name": "sample"
               }
             },
-            "named": false,
+            "named": true,
             "value": "metric"
           }
         ]
@@ -99,7 +104,7 @@
             "type": "SYMBOL",
             "name": "_escaped_string"
           },
-          "named": false,
+          "named": true,
           "value": "metric_help"
         },
         {
@@ -166,7 +171,7 @@
             "type": "PATTERN",
             "value": "[a-zA-Z_][a-zA-Z0-9_]*"
           },
-          "named": false,
+          "named": true,
           "value": "unit"
         },
         {
@@ -175,7 +180,7 @@
         }
       ]
     },
-    "eof_line": {
+    "_eof_line": {
       "type": "SEQ",
       "members": [
         {
@@ -411,7 +416,7 @@
             "type": "SYMBOL",
             "name": "_escaped_string"
           },
-          "named": false,
+          "named": true,
           "value": "label_value"
         },
         {
