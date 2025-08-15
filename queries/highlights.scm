@@ -17,22 +17,20 @@
   "EOF"
 ] @keyword
 
-(metric_type) @type.builtin
+(type_line (type) @type.builtin)
 
-(metric_unit) @type
+(sample
+  metric_name: (identifier) @variable)
 
-(metric_name) @variable
+(label
+  label_name: (identifier) @property
+  label_value: (string) @string)
 
-(label_name) @label
-
-((label_name) @attribute.builtin
+(label
+  label_name: (identifier) @attribute.builtin
  (#eq? @attribute.builtin "le"))
 
-(label_value) @string
-
-(metric_value) @number.float
-
-(timestamp) @number.float
+(number) @number
 
 [ "{" "}"] @punctuation.bracket
 
