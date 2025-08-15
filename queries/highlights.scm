@@ -4,6 +4,8 @@
   (help_line)
 ] @comment.metric_descriptor
 
+(eof) @comment.eof
+
 (exemplar) @comment.exemplar
 
 [
