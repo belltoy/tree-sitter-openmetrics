@@ -1,8 +1,10 @@
 [
-  (comment)
   (type_line)
+  (unit_line)
   (help_line)
-] @comment
+] @comment.metric_descriptor
+
+(exemplar) @comment.exemplar
 
 [
   "TYPE"
@@ -21,7 +23,7 @@
 
 (metric_value) @number.float
 
-(timestamp) @number
+(timestamp) @number.float
 
 [ "{" "}"] @punctuation.bracket
 
