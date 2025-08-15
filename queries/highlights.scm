@@ -6,6 +6,8 @@
 
 (eof) @comment.eof
 
+(metric_help) @comment.documentation
+
 (exemplar) @comment.exemplar
 
 [
@@ -17,7 +19,7 @@
 
 (metric_type) @type.builtin
 
-(unit) @type
+(metric_unit) @type
 
 (metric_name) @variable
 

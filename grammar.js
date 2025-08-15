@@ -15,22 +15,22 @@ module.exports = grammar({
   extras: ($) => [' '],
 
   rules: {
-    source_file: $ => seq(alias(repeat($.metricfamily), $.metricset), alias($._eof_line, $.eof)),
+    source_file: $ => seq(repeat($._line), $.eof),
 
-    metricfamily: $ => prec.right(seq(
+    _line: $ => choice(
+      $.sample,
+      $.help_line,
       $.type_line,
-      optional($.unit_line),
-      optional($.help_line),
-      alias(repeat($.sample), $.metric),
-    )),
+      $.unit_line,
+    ),
 
     help_line: $ => seq(token("#"), token("HELP"), $.metric_name, alias($._escaped_string, $.metric_help), '\n'),
 
     type_line: $ => seq(token("#"), token("TYPE"), $.metric_name, $.metric_type, '\n'),
 
-    unit_line: $ => seq(token("#"), token("UNIT"), $.metric_name, alias(/[a-zA-Z_][a-zA-Z0-9_]*/, $.unit), '\n'),
+    unit_line: $ => seq(token("#"), token("UNIT"), $.metric_name, alias(/[a-zA-Z_][a-zA-Z0-9_]*/, $.metric_unit), '\n'),
 
-    _eof_line: $ => seq(token("#"), token("EOF"), optional('\n')),
+    eof: $ => seq(token("#"), token("EOF"), optional('\n')),
 
     metric_type: $ => choice(
       "counter",

@@ -6,76 +6,38 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "metricfamily"
-            }
-          },
-          "named": true,
-          "value": "metricset"
-        },
-        {
-          "type": "ALIAS",
+          "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "_eof_line"
-          },
-          "named": true,
-          "value": "eof"
+            "name": "_line"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "eof"
         }
       ]
     },
-    "metricfamily": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "type_line"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "unit_line"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "help_line"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "ALIAS",
-            "content": {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "sample"
-              }
-            },
-            "named": true,
-            "value": "metric"
-          }
-        ]
-      }
+    "_line": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "sample"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "help_line"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type_line"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unit_line"
+        }
+      ]
     },
     "help_line": {
       "type": "SEQ",
@@ -172,7 +134,7 @@
             "value": "[a-zA-Z_][a-zA-Z0-9_]*"
           },
           "named": true,
-          "value": "unit"
+          "value": "metric_unit"
         },
         {
           "type": "STRING",
@@ -180,7 +142,7 @@
         }
       ]
     },
-    "_eof_line": {
+    "eof": {
       "type": "SEQ",
       "members": [
         {

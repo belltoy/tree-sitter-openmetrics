@@ -86,21 +86,6 @@
     }
   },
   {
-    "type": "metric",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "sample",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "metric_type",
     "named": true,
     "fields": {}
@@ -109,48 +94,6 @@
     "type": "metric_value",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "metricfamily",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "help_line",
-          "named": true
-        },
-        {
-          "type": "metric",
-          "named": true
-        },
-        {
-          "type": "type_line",
-          "named": true
-        },
-        {
-          "type": "unit_line",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "metricset",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "metricfamily",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "sample",
@@ -197,7 +140,19 @@
           "named": true
         },
         {
-          "type": "metricset",
+          "type": "help_line",
+          "named": true
+        },
+        {
+          "type": "sample",
+          "named": true
+        },
+        {
+          "type": "type_line",
+          "named": true
+        },
+        {
+          "type": "unit_line",
           "named": true
         }
       ]
@@ -240,7 +195,7 @@
           "named": true
         },
         {
-          "type": "unit",
+          "type": "metric_unit",
           "named": true
         }
       ]
@@ -315,16 +270,16 @@
     "named": true
   },
   {
+    "type": "metric_unit",
+    "named": true
+  },
+  {
     "type": "stateset",
     "named": false
   },
   {
     "type": "summary",
     "named": false
-  },
-  {
-    "type": "unit",
-    "named": true
   },
   {
     "type": "unknown",
