@@ -44,6 +44,16 @@
     "type": "help_line",
     "named": true,
     "fields": {
+      "metric_help": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "docstring",
+            "named": true
+          }
+        ]
+      },
       "metric_name": {
         "multiple": false,
         "required": true,
@@ -54,16 +64,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "metric_help",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -212,17 +212,17 @@
             "named": true
           }
         ]
+      },
+      "metric_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -238,17 +238,17 @@
             "named": true
           }
         ]
+      },
+      "metric_unit": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "unit",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "metric_unit",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -288,11 +288,7 @@
     "named": false
   },
   {
-    "type": "metric_help",
-    "named": true
-  },
-  {
-    "type": "metric_unit",
+    "type": "docstring",
     "named": true
   },
   {
@@ -301,6 +297,10 @@
   },
   {
     "type": "type",
+    "named": true
+  },
+  {
+    "type": "unit",
     "named": true
   },
   {

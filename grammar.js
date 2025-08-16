@@ -28,7 +28,7 @@ module.exports = grammar({
       token("#"),
       token("HELP"),
       field("metric_name", $._metric_name),
-      alias($._escaped_string, $.metric_help),
+      field("metric_help", alias($._escaped_string, $.docstring)),
       '\n'
     ),
 
@@ -36,14 +36,14 @@ module.exports = grammar({
       token("#"),
       token("TYPE"),
       field("metric_name", $._metric_name),
-      $._metric_type,
+      field("metric_type", $._metric_type),
       '\n'
     ),
 
     unit_line: $ => seq(token("#"),
       token("UNIT"),
       field("metric_name", $._metric_name),
-      alias(/[a-zA-Z_][a-zA-Z0-9_]*/, $.metric_unit),
+      field("metric_unit", alias(/[a-zA-Z_][a-zA-Z0-9_]*/, $.unit)),
       '\n'
     ),
 

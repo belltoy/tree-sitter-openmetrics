@@ -13,7 +13,7 @@
 #define ALIAS_COUNT 2
 #define TOKEN_COUNT 26
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 5
+#define FIELD_COUNT 8
 #define MAX_ALIAS_SEQUENCE_LENGTH 6
 #define MAX_RESERVED_WORD_SET_SIZE 0
 #define PRODUCTION_ID_COUNT 11
@@ -63,8 +63,8 @@ enum ts_symbol_identifiers {
   sym__timestamp = 41,
   aux_sym_source_file_repeat1 = 42,
   aux_sym_label_set_repeat1 = 43,
-  alias_sym_metric_help = 44,
-  alias_sym_metric_unit = 45,
+  alias_sym_docstring = 44,
+  alias_sym_unit = 45,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -112,8 +112,8 @@ static const char * const ts_symbol_names[] = {
   [sym__timestamp] = "_timestamp",
   [aux_sym_source_file_repeat1] = "source_file_repeat1",
   [aux_sym_label_set_repeat1] = "label_set_repeat1",
-  [alias_sym_metric_help] = "metric_help",
-  [alias_sym_metric_unit] = "metric_unit",
+  [alias_sym_docstring] = "docstring",
+  [alias_sym_unit] = "unit",
 };
 
 static const TSSymbol ts_symbol_map[] = {
@@ -161,8 +161,8 @@ static const TSSymbol ts_symbol_map[] = {
   [sym__timestamp] = sym__timestamp,
   [aux_sym_source_file_repeat1] = aux_sym_source_file_repeat1,
   [aux_sym_label_set_repeat1] = aux_sym_label_set_repeat1,
-  [alias_sym_metric_help] = alias_sym_metric_help,
-  [alias_sym_metric_unit] = alias_sym_metric_unit,
+  [alias_sym_docstring] = alias_sym_docstring,
+  [alias_sym_unit] = alias_sym_unit,
 };
 
 static const TSSymbolMetadata ts_symbol_metadata[] = {
@@ -342,11 +342,11 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = false,
   },
-  [alias_sym_metric_help] = {
+  [alias_sym_docstring] = {
     .visible = true,
     .named = true,
   },
-  [alias_sym_metric_unit] = {
+  [alias_sym_unit] = {
     .visible = true,
     .named = true,
   },
@@ -355,16 +355,22 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
 enum ts_field_identifiers {
   field_label_name = 1,
   field_label_value = 2,
-  field_metric_name = 3,
-  field_metric_value = 4,
-  field_timestamp = 5,
+  field_metric_help = 3,
+  field_metric_name = 4,
+  field_metric_type = 5,
+  field_metric_unit = 6,
+  field_metric_value = 7,
+  field_timestamp = 8,
 };
 
 static const char * const ts_field_names[] = {
   [0] = NULL,
   [field_label_name] = "label_name",
   [field_label_value] = "label_value",
+  [field_metric_help] = "metric_help",
   [field_metric_name] = "metric_name",
+  [field_metric_type] = "metric_type",
+  [field_metric_unit] = "metric_unit",
   [field_metric_value] = "metric_value",
   [field_timestamp] = "timestamp",
 };
@@ -373,13 +379,13 @@ static const TSMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [1] = {.index = 0, .length = 2},
   [2] = {.index = 2, .length = 2},
   [3] = {.index = 4, .length = 3},
-  [4] = {.index = 7, .length = 1},
-  [5] = {.index = 7, .length = 1},
-  [6] = {.index = 7, .length = 1},
-  [7] = {.index = 8, .length = 2},
-  [8] = {.index = 10, .length = 3},
-  [9] = {.index = 13, .length = 1},
-  [10] = {.index = 14, .length = 2},
+  [4] = {.index = 7, .length = 2},
+  [5] = {.index = 9, .length = 2},
+  [6] = {.index = 11, .length = 2},
+  [7] = {.index = 13, .length = 2},
+  [8] = {.index = 15, .length = 3},
+  [9] = {.index = 18, .length = 1},
+  [10] = {.index = 19, .length = 2},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
@@ -394,17 +400,24 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_metric_value, 1},
     {field_timestamp, 2},
   [7] =
+    {field_metric_help, 3},
     {field_metric_name, 2},
-  [8] =
+  [9] =
+    {field_metric_name, 2},
+    {field_metric_type, 3},
+  [11] =
+    {field_metric_name, 2},
+    {field_metric_unit, 3},
+  [13] =
     {field_label_name, 0},
     {field_label_value, 2},
-  [10] =
+  [15] =
     {field_metric_name, 0},
     {field_metric_value, 2},
     {field_timestamp, 3},
-  [13] =
+  [18] =
     {field_metric_value, 2},
-  [14] =
+  [19] =
     {field_metric_value, 2},
     {field_timestamp, 3},
 };
@@ -412,10 +425,10 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {
   [0] = {0},
   [4] = {
-    [3] = alias_sym_metric_help,
+    [3] = alias_sym_docstring,
   },
   [6] = {
-    [3] = alias_sym_metric_unit,
+    [3] = alias_sym_unit,
   },
 };
 

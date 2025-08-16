@@ -4,9 +4,10 @@
   (help_line)
 ] @comment.metric_descriptor
 
-(eof) @comment.eof
+(help_line
+  metric_help: (docstring) @comment.documentation @spell)
 
-(metric_help) @comment.documentation
+(eof) @comment.eof
 
 (exemplar) @comment.exemplar
 
@@ -18,6 +19,8 @@
 ] @keyword
 
 (type_line (type) @type.builtin)
+
+(unit_line (unit) @type)
 
 (sample
   metric_name: (identifier) @variable)
